@@ -13,6 +13,11 @@ Add a check call to the beginning of each function you want to test.
 ```lua
 barrack = require('barrack')
 
+-- Barrack is disabled by default. barrack.check is a blank function unless enabled.
+-- This is to remove any performance hit in production, as barrack is mainly meant for debugging.
+-- You can disable barrack with barrack.disable().
+barrack.enable()
+
 function createInstance(x, y, name, info)
 	barrack.check(	{  x,        y,        name,     info   }, 
 					{ 'number', 'number', 'string', 'table' })
